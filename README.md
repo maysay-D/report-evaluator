@@ -1,4 +1,4 @@
-# レポート評価システム
+# レポート評価システム: Baseline vs Improved
 
 授業要件である以下を満たすための比較実験用プロジェクトです。
 
@@ -9,9 +9,9 @@
 
 ## 1. システム構成
 
-### ベースライン
+### Baseline
 
-意味表現モデルを使わない単純な比較を行うシステムです。
+意味表現モデルを使わない単純な比較対象です。
 
 - 冗長性
   - 文字 bigram / trigram の反復率
@@ -22,9 +22,9 @@
 - 要求網羅度
   - 必須・推奨キーワードの完全一致
 
-### 改善後のシステム
+### Improved
 
-Baselineに意味的な言語処理を追加した手法のシステムです。
+Baselineに意味的な言語処理を追加した提案手法です。
 
 - 冗長性
   - n-gram反復率
@@ -38,7 +38,7 @@ Baselineに意味的な言語処理を追加した手法のシステムです。
   - GiNZAによるNER
   - TF-IDFによる設問・模範解答との差分語候補
 
-提案システムには少なくとも以下の言語処理技術が含まれます。
+このため、提案システムには少なくとも以下の言語処理技術が含まれます。
 
 1. TF-IDF
 2. Sentence-BERT
@@ -49,7 +49,7 @@ Baselineに意味的な言語処理を追加した手法のシステムです。
 
 ```text
 report_evaluator_comparison/
-├── .python-version      # uvが利用するPython
+├── .python-version      # uvが利用するPython（3.11）
 ├── pyproject.toml       # uvの依存関係定義
 ├── UV_GUIDE.md          # uv実行手順
 ├── report_evaluator/
@@ -62,29 +62,28 @@ report_evaluator_comparison/
 │   ├── evaluation_sample.jsonl
 │   └── evaluation_dataset_50.jsonl
 ├── run.py               # 片方のシステムを実行
-├── compare.py           # ベースライン / 改善語 を同じ入力で比較
+├── compare.py           # Baseline / Improved を同じ入力で比較
 └── evaluate_dataset.py  # 定量評価 + 誤り分析
 ```
 
 ## 3. セットアップ（uv）
 
-このプロジェクトは `uv` と `pyproject.toml` を使って依存関係を管理します。従来の `pip install -r ...` は不要です。
-詳しくは [`UV_GUIDE.md`](UV_GUIDE.md) を参照してください。
+このプロジェクトは `uv` と `pyproject.toml` を使って依存関係を管理します。従来の `pip install -r ...` は不要です。詳しくは [`UV_GUIDE.md`](UV_GUIDE.md) を参照してください。
 
-### ベースラインを使用
+### Baselineだけ試す
 
 ```bash
 uv sync
 uv run python run.py examples/input.json --system baseline --output baseline_result.json
 ```
 
-`uv run` は必要に応じて環境を同期するため、初回から次の1コマンドでも実行可能です。
+`uv run` は必要に応じて環境を同期するため、初回から次の1コマンドでも実行できます。
 
 ```bash
 uv run python run.py examples/input.json --system baseline
 ```
 
-### 改善後のシステムを使用
+### Improvedまで利用する
 
 改善版の依存関係は `improved` extra として分離しています。
 
@@ -93,7 +92,7 @@ uv sync --extra improved
 uv run --extra improved python run.py examples/input.json --system improved --output improved_result.json
 ```
 
-改善後のシステムの初回実行時にはSentence-BERTとNLIのモデルがHugging Faceからダウンロードされます。
+Improvedの初回実行時にはSentence-BERTとNLIのモデルがHugging Faceからダウンロードされます。
 
 ## 4. 実行
 
@@ -111,8 +110,29 @@ uv run --extra improved python run.py examples/input.json --system improved --ou
 
 ### 両方を一度に比較
 
+1件の入力を比較する場合:
+
 ```bash
 uv run --extra improved python compare.py examples/input.json --output comparison_result.json
+```
+
+50件データセットを比較する場合:
+
+```bash
+uv run --extra improved python compare.py \
+  examples/evaluation_dataset_50.pretty.json \
+  --output comparison_result.json
+```
+
+データセット比較では、各ケースについて `Gold / Baseline / Improved` の総合点・冗長性・論理整合性・要求網羅度を1〜5点でターミナルに一覧表示します。`ΔB` と `ΔI` は、それぞれBaseline/Improvedの総合点から正解総合点を引いた誤差です。完全な検出結果や各軸の誤差は `comparison_result.json` に保存されます。
+
+保存JSON全体も標準出力に表示したい場合は `--json-stdout` を付けます。
+
+```bash
+uv run --extra improved python compare.py \
+  examples/evaluation_dataset_50.pretty.json \
+  --output comparison_result.json \
+  --json-stdout
 ```
 
 ## 5. 共通出力
@@ -147,7 +167,7 @@ uv run --extra improved python compare.py examples/input.json --output compariso
 
 `examples/evaluation_sample.jsonl`は評価スクリプト動作確認用のtoyデータです。研究・授業レポートで最終結果を報告するときは、このファイルを実際の人手アノテーションに置き換えてください。
 
-1行につき1レポートで出力されます。
+1行につき1レポートです。
 
 ```json
 {

@@ -10,6 +10,7 @@ from scipy.stats import spearmanr
 
 from report_evaluator import BaselineEvaluator, EvaluationRequest
 from report_evaluator.common import split_sentences_with_spans, score100_to_5
+from report_evaluator.dataset_io import load_dataset_records
 
 
 @dataclass
@@ -78,6 +79,7 @@ def evaluate_system(name: str, records: list[dict]) -> dict:
         "overall": ([], []),
     }
     errors = []
+    case_results = []
 
     for item in records:
         case_id = str(item.get("case_id", "unknown"))
@@ -136,16 +138,59 @@ def evaluate_system(name: str, records: list[dict]) -> dict:
         for keyword in sorted(gold_kw - pred_kw):
             errors.append({"case_id": case_id, "category": "keyword", "error": "false_negative", "keyword": keyword})
 
-        if "overall_score_5" in gold:
-            predicted = score100_to_5(result.overall_score_100)
-            diff = predicted - float(gold["overall_score_5"])
+        predicted_scores_5 = {
+            "redundancy": round(score100_to_5(result.redundancy_score), 3),
+            "consistency": round(score100_to_5(result.consistency_score), 3),
+            "coverage": round(score100_to_5(result.coverage_score), 3),
+            "overall": round(float(result.overall_score_5), 3),
+        }
+        gold_scores_5 = {
+            "redundancy": float(gold["redundancy_score_5"]) if gold.get("redundancy_score_5") is not None else None,
+            "consistency": float(gold["consistency_score_5"]) if gold.get("consistency_score_5") is not None else None,
+            "coverage": float(gold["coverage_score_5"]) if gold.get("coverage_score_5") is not None else None,
+            "overall": float(gold["overall_score_5"]) if gold.get("overall_score_5") is not None else None,
+        }
+        score_errors_5 = {
+            axis: (round(predicted_scores_5[axis] - gold_scores_5[axis], 3) if gold_scores_5[axis] is not None else None)
+            for axis in predicted_scores_5
+        }
+
+        case_results.append({
+            "case_id": case_id,
+            "topic": item.get("dataset_meta", {}).get("topic"),
+            "category": item.get("dataset_meta", {}).get("category"),
+            "pattern": item.get("dataset_meta", {}).get("pattern"),
+            "difficulty": item.get("dataset_meta", {}).get("difficulty"),
+            "gold_score_5": gold_scores_5,
+            "predicted_score_5": predicted_scores_5,
+            "score_error_5": score_errors_5,
+            "predicted_score_100": {
+                "redundancy": round(float(result.redundancy_score), 2),
+                "consistency": round(float(result.consistency_score), 2),
+                "coverage": round(float(result.coverage_score), 2),
+                "overall": round(float(result.overall_score_100), 2),
+            },
+            "detected": {
+                "redundancy_sentences": sorted(pred_red),
+                "contradiction_sentences": sorted(pred_con),
+                "matched_required_keywords": sorted(pred_kw),
+            },
+            "gold_detection": {
+                "redundancy_sentences": sorted(gold_red),
+                "contradiction_sentences": sorted(gold_con),
+                "matched_required_keywords": sorted(gold_kw),
+            },
+        })
+
+        if gold_scores_5["overall"] is not None:
+            diff = predicted_scores_5["overall"] - gold_scores_5["overall"]
             if abs(diff) >= 1.0:
                 errors.append({
                     "case_id": case_id,
                     "category": "overall_score",
                     "error": "large_score_error",
-                    "gold": gold["overall_score_5"],
-                    "predicted": round(predicted, 3),
+                    "gold": gold_scores_5["overall"],
+                    "predicted": predicted_scores_5["overall"],
                     "difference": round(diff, 3),
                 })
 
@@ -160,22 +205,19 @@ def evaluate_system(name: str, records: list[dict]) -> dict:
         "score_agreement_1_to_5": {
             axis: score_metrics(gold, pred) for axis, (gold, pred) in score_pairs.items()
         },
+        "case_results": case_results,
         "error_analysis": errors,
     }
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("dataset", help="1行1事例のJSONL正解データ")
+    parser.add_argument("dataset", help="正解データ（JSONL / JSON配列の両方に対応）")
     parser.add_argument("--systems", nargs="+", choices=["baseline", "improved"], default=["baseline"])
     parser.add_argument("--output", default="evaluation_result.json")
     args = parser.parse_args()
 
-    records = []
-    with open(args.dataset, encoding="utf-8") as f:
-        for line in f:
-            if line.strip():
-                records.append(json.loads(line))
+    records = load_dataset_records(args.dataset)
 
     output = {name: evaluate_system(name, records) for name in args.systems}
     Path(args.output).write_text(json.dumps(output, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

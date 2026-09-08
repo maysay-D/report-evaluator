@@ -22,7 +22,7 @@ uv run python run.py examples/input.json --system baseline --output baseline_res
 uv run python run.py examples/input.json --system baseline
 ```
 
-## 2. 改善後のシステムを実行
+## 2. 改善版を実行
 
 Sentence-BERT、NLI、GiNZAなどは `improved` extra に分離しています。
 
@@ -38,15 +38,15 @@ uv run --extra improved python run.py examples/input.json --system improved --ou
 
 初回実行時は Hugging Face から Sentence-BERT / NLI のモデルがダウンロードされます。
 
-## 3. ベースラインのシステムと改善後のシステムを比較
+## 3. Baseline と Improved を比較
 
 ```bash
 uv run --extra improved python compare.py examples/input.json --output comparison_result.json
 ```
 
-## 4. 50件のデータセットを評価
+## 4. 50件データセットを評価
 
-ベースラインのシステムのみ:
+Baselineのみ:
 
 ```bash
 uv run python evaluate_dataset.py examples/evaluation_dataset_50.jsonl \
@@ -54,7 +54,7 @@ uv run python evaluate_dataset.py examples/evaluation_dataset_50.jsonl \
   --output baseline_evaluation.json
 ```
 
-ベースラインのシステム / 改善後のシステムの比較:
+Baseline / Improvedの比較:
 
 ```bash
 uv run --extra improved python evaluate_dataset.py examples/evaluation_dataset_50.jsonl \
@@ -72,7 +72,7 @@ uv run --extra improved python evaluate_dataset.py examples/evaluation_dataset_5
 uv sync --locked
 ```
 
-改善後のシステム込み:
+Improved込み:
 
 ```bash
 uv sync --locked --extra improved
@@ -88,16 +88,62 @@ uv python install 3.11
 
 ## 7. 依存関係を変更する場合
 
-ベースラインのシステム側へ追加:
+Baseline側へ追加:
 
 ```bash
 uv add <package>
 ```
 
-改善後のシステム側へ追加:
+Improved側へ追加:
 
 ```bash
 uv add --optional improved <package>
 ```
 
 変更後は `pyproject.toml` と `uv.lock` の両方をコミットします。
+
+
+## データセット比較
+
+`compare.py` は次の3形式を自動判別します。
+
+- 1件分の入力JSON（`examples/input.json`）
+- JSON配列（`examples/evaluation_dataset_50.pretty.json`）
+- JSONL（`examples/evaluation_dataset_50.jsonl`）
+
+したがって、50件をまとめてBaseline / Improvedで比較する場合は次のどちらでも実行できます。
+
+```bash
+uv run --extra improved python compare.py \
+  examples/evaluation_dataset_50.pretty.json \
+  --output comparison_result.json
+```
+
+または
+
+```bash
+uv run --extra improved python compare.py \
+  examples/evaluation_dataset_50.jsonl \
+  --output comparison_result.json
+```
+
+`evaluate_dataset.py` もJSON配列とJSONLの両方を受け付けます。
+
+### 各ケースの採点結果表示
+
+データセットを `compare.py` に渡すと、各ケースについて次の情報を1行ずつ表示します。
+
+- Gold: 正解ラベルの総合点 / 冗長性 / 論理整合性 / 要求網羅度
+- BASE: Baselineの予測点
+- IMPR: Improvedの予測点
+- ΔB: Baseline総合点 - Gold総合点
+- ΔI: Improved総合点 - Gold総合点
+
+すべて1〜5点尺度です。表示例:
+
+```text
+CASE           PATTERN                     GOLD O/R/C/K           BASE O/R/C/K       ΔB  IMPR O/R/C/K       ΔI
+synthetic_001  exemplary_exact             5.00/5.00/5.00/5.00    4.88/...          -0.12 4.95/...          -0.05
+```
+
+詳細は `comparison_result.json` の `cases` にケース単位で保存されます。標準出力にもJSON全体を出したい場合は `--json-stdout` を指定してください。
