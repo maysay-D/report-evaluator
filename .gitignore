@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.py[cod]
+*.json.tmp
+baseline_result.json
+improved_result.json
+comparison_result.json
+evaluation_result.json
+baseline_evaluation.json
