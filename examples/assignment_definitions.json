@@ -1,0 +1,238 @@
+{
+  "global_q1": {
+    "topic": "グローバリゼーションの光と影",
+    "prompt": "グローバリゼーションは、世界、または各国の所得格差をどのように変化させましたか。また、なぜ所得格差拡大、または縮小の現象が現れたと考えますか。300字以内で答えなさい。",
+    "required_keywords": [
+      "グローバリゼーション",
+      "所得格差"
+    ],
+    "recommended_keywords": [
+      "格差拡大",
+      "格差縮小"
+    ],
+    "reference_text": null,
+    "keyword_status": "暫定。設問文から作成したスターター設定であり、公式採点基準ではない。",
+    "prompt_source": {
+      "title": "機械学習を利用した日本語小論文採点手法の比較",
+      "venue": "言語処理学会 第28回年次大会 (2022)",
+      "url": "https://www.anlp.jp/proceedings/annual_meeting/2022/pdf_dir/G2-2.pdf",
+      "note": "設問文のみを公開論文から補完。required/recommended_keywords は本変換用に設問文から作成した暫定設定であり、公式の採点基準ではない。"
+    }
+  },
+  "global_q2": {
+    "topic": "グローバリゼーションの光と影",
+    "prompt": "多国籍企業は、グローバリゼーションの進展の中でどのような役割を果たしましたか。多国籍企業の具体例をあげて、250字以内で答えなさい。",
+    "required_keywords": [
+      "多国籍企業",
+      "グローバリゼーション"
+    ],
+    "recommended_keywords": [
+      "具体例",
+      "役割"
+    ],
+    "reference_text": null,
+    "keyword_status": "暫定。設問文から作成したスターター設定であり、公式採点基準ではない。",
+    "prompt_source": {
+      "title": "機械学習を利用した日本語小論文採点手法の比較",
+      "venue": "言語処理学会 第28回年次大会 (2022)",
+      "url": "https://www.anlp.jp/proceedings/annual_meeting/2022/pdf_dir/G2-2.pdf",
+      "note": "設問文のみを公開論文から補完。required/recommended_keywords は本変換用に設問文から作成した暫定設定であり、公式の採点基準ではない。"
+    }
+  },
+  "global_q3": {
+    "topic": "グローバリゼーションの光と影",
+    "prompt": "文化のグローバリゼーションは、私たちの生活にどのような影響を与えましたか。また、あなたはそれをどのように評価しますか。具体例をあげて、300字以内で答えなさい。",
+    "required_keywords": [
+      "文化のグローバリゼーション",
+      "生活への影響"
+    ],
+    "recommended_keywords": [
+      "具体例",
+      "評価"
+    ],
+    "reference_text": null,
+    "keyword_status": "暫定。設問文から作成したスターター設定であり、公式採点基準ではない。",
+    "prompt_source": {
+      "title": "機械学習を利用した日本語小論文採点手法の比較",
+      "venue": "言語処理学会 第28回年次大会 (2022)",
+      "url": "https://www.anlp.jp/proceedings/annual_meeting/2022/pdf_dir/G2-2.pdf",
+      "note": "設問文のみを公開論文から補完。required/recommended_keywords は本変換用に設問文から作成した暫定設定であり、公式の採点基準ではない。"
+    }
+  },
+  "science_q1": {
+    "topic": "自然科学の構成と科学教育",
+    "prompt": "「科学的」とはどのような条件をみたす必要があるのか100字以内で答えよ。",
+    "required_keywords": [
+      "科学的",
+      "条件"
+    ],
+    "recommended_keywords": [],
+    "reference_text": null,
+    "keyword_status": "暫定。設問文から作成したスターター設定であり、公式採点基準ではない。",
+    "prompt_source": {
+      "title": "機械学習を利用した日本語小論文採点手法の比較",
+      "venue": "言語処理学会 第28回年次大会 (2022)",
+      "url": "https://www.anlp.jp/proceedings/annual_meeting/2022/pdf_dir/G2-2.pdf",
+      "note": "設問文のみを公開論文から補完。required/recommended_keywords は本変換用に設問文から作成した暫定設定であり、公式の採点基準ではない。"
+    }
+  },
+  "science_q2": {
+    "topic": "自然科学の構成と科学教育",
+    "prompt": "講義で解説した自然科学の二つの側面を参考に、自然科学が果たす役割について400字以内で論ぜよ。",
+    "required_keywords": [
+      "自然科学",
+      "二つの側面",
+      "役割"
+    ],
+    "recommended_keywords": [],
+    "reference_text": null,
+    "keyword_status": "暫定。設問文から作成したスターター設定であり、公式採点基準ではない。",
+    "prompt_source": {
+      "title": "機械学習を利用した日本語小論文採点手法の比較",
+      "venue": "言語処理学会 第28回年次大会 (2022)",
+      "url": "https://www.anlp.jp/proceedings/annual_meeting/2022/pdf_dir/G2-2.pdf",
+      "note": "設問文のみを公開論文から補完。required/recommended_keywords は本変換用に設問文から作成した暫定設定であり、公式の採点基準ではない。"
+    }
+  },
+  "science_q3": {
+    "topic": "自然科学の構成と科学教育",
+    "prompt": "「Scientific and Technological Literacy for All」の狙いを考慮し、これからの科学教育はどうあるべきか500字以上800字以内で論ぜよ。",
+    "required_keywords": [
+      "Scientific and Technological Literacy for All",
+      "科学教育"
+    ],
+    "recommended_keywords": [
+      "科学リテラシー"
+    ],
+    "reference_text": null,
+    "keyword_status": "暫定。設問文から作成したスターター設定であり、公式採点基準ではない。",
+    "prompt_source": {
+      "title": "機械学習を利用した日本語小論文採点手法の比較",
+      "venue": "言語処理学会 第28回年次大会 (2022)",
+      "url": "https://www.anlp.jp/proceedings/annual_meeting/2022/pdf_dir/G2-2.pdf",
+      "note": "設問文のみを公開論文から補完。required/recommended_keywords は本変換用に設問文から作成した暫定設定であり、公式の採点基準ではない。"
+    }
+  },
+  "easia_q1": {
+    "topic": "東アジア経済の現状",
+    "prompt": "日中韓の相互依存の強さを、データを示して簡潔に述べなさい。また、相互依存を示す経済協力・協業の具体例をあげ、合わせて300字以内で答えなさい。",
+    "required_keywords": [
+      "日中韓",
+      "相互依存",
+      "経済協力"
+    ],
+    "recommended_keywords": [
+      "協業",
+      "具体例",
+      "データ"
+    ],
+    "reference_text": null,
+    "keyword_status": "暫定。設問文から作成したスターター設定であり、公式採点基準ではない。",
+    "prompt_source": {
+      "title": "機械学習を利用した日本語小論文採点手法の比較",
+      "venue": "言語処理学会 第28回年次大会 (2022)",
+      "url": "https://www.anlp.jp/proceedings/annual_meeting/2022/pdf_dir/G2-2.pdf",
+      "note": "設問文のみを公開論文から補完。required/recommended_keywords は本変換用に設問文から作成した暫定設定であり、公式の採点基準ではない。"
+    }
+  },
+  "easia_q2": {
+    "topic": "東アジア経済の現状",
+    "prompt": "「中所得国の罠」の概略を説明し、どうしたらそれを乗り越えることができるか250字以内で説明しなさい。",
+    "required_keywords": [
+      "中所得国の罠",
+      "乗り越える方法"
+    ],
+    "recommended_keywords": [],
+    "reference_text": null,
+    "keyword_status": "暫定。設問文から作成したスターター設定であり、公式採点基準ではない。",
+    "prompt_source": {
+      "title": "機械学習を利用した日本語小論文採点手法の比較",
+      "venue": "言語処理学会 第28回年次大会 (2022)",
+      "url": "https://www.anlp.jp/proceedings/annual_meeting/2022/pdf_dir/G2-2.pdf",
+      "note": "設問文のみを公開論文から補完。required/recommended_keywords は本変換用に設問文から作成した暫定設定であり、公式の採点基準ではない。"
+    }
+  },
+  "easia_q3": {
+    "topic": "東アジア経済の現状",
+    "prompt": "日中韓には少子化や環境問題など3国に共通する経済問題がある一方、それぞれの国に特有の課題も多くあります。それぞれの国が抱えている特徴的な経済問題をあげ、東アジアにおける協調と対立の構造を300字以内で説明しなさい。",
+    "required_keywords": [
+      "日中韓",
+      "経済問題",
+      "協調",
+      "対立"
+    ],
+    "recommended_keywords": [
+      "少子化",
+      "環境問題"
+    ],
+    "reference_text": null,
+    "keyword_status": "暫定。設問文から作成したスターター設定であり、公式採点基準ではない。",
+    "prompt_source": {
+      "title": "機械学習を利用した日本語小論文採点手法の比較",
+      "venue": "言語処理学会 第28回年次大会 (2022)",
+      "url": "https://www.anlp.jp/proceedings/annual_meeting/2022/pdf_dir/G2-2.pdf",
+      "note": "設問文のみを公開論文から補完。required/recommended_keywords は本変換用に設問文から作成した暫定設定であり、公式の採点基準ではない。"
+    }
+  },
+  "criticize_q1": {
+    "topic": "批判的思考とエセ科学",
+    "prompt": "「批判的思考」の定義に関連して、「批判的思考」に関する研究で共通に見出される「批判的思考」の3つの観点を述べなさい。100文字。",
+    "required_keywords": [
+      "批判的思考",
+      "3つの観点"
+    ],
+    "recommended_keywords": [],
+    "reference_text": null,
+    "keyword_status": "暫定。設問文から作成したスターター設定であり、公式採点基準ではない。",
+    "prompt_source": {
+      "title": "機械学習を利用した日本語小論文採点手法の比較",
+      "venue": "言語処理学会 第28回年次大会 (2022)",
+      "url": "https://www.anlp.jp/proceedings/annual_meeting/2022/pdf_dir/G2-2.pdf",
+      "note": "設問文のみを公開論文から補完。required/recommended_keywords は本変換用に設問文から作成した暫定設定であり、公式の採点基準ではない。"
+    }
+  },
+  "criticize_q2": {
+    "topic": "批判的思考とエセ科学",
+    "prompt": "講義で紹介した右のグラフを根拠に「長生きするためにはカラーテレビを多く所有すれば良い」と主張することが妥当ではない理由を400字以内で述べなさい。ただし、このようなグラフが形成される理由の説明を加えること。",
+    "required_keywords": [
+      "カラーテレビ",
+      "長生き",
+      "妥当ではない理由"
+    ],
+    "recommended_keywords": [
+      "相関",
+      "因果関係",
+      "グラフ"
+    ],
+    "reference_text": null,
+    "keyword_status": "暫定。設問文から作成したスターター設定であり、公式採点基準ではない。",
+    "prompt_source": {
+      "title": "機械学習を利用した日本語小論文採点手法の比較",
+      "venue": "言語処理学会 第28回年次大会 (2022)",
+      "url": "https://www.anlp.jp/proceedings/annual_meeting/2022/pdf_dir/G2-2.pdf",
+      "note": "設問文のみを公開論文から補完。required/recommended_keywords は本変換用に設問文から作成した暫定設定であり、公式の採点基準ではない。"
+    }
+  },
+  "criticize_q3": {
+    "topic": "批判的思考とエセ科学",
+    "prompt": "各自で「ニセ科学」の可能性があると思う実例を挙げ、その実例が「ニセ科学」であることを証明するためには、どのような方法で、どのような証拠を得て、どのように説明する必要があるのかを論じなさい。また、その実例がニセ科学でも信じてしまいやすい要因は何かについても考察し、説明しなさい。ただし、講義で扱った事例以外のものを挙げること。500字以上800字以内。",
+    "required_keywords": [
+      "ニセ科学",
+      "実例",
+      "証拠",
+      "信じてしまいやすい要因"
+    ],
+    "recommended_keywords": [
+      "検証",
+      "説明"
+    ],
+    "reference_text": null,
+    "keyword_status": "暫定。設問文から作成したスターター設定であり、公式採点基準ではない。",
+    "prompt_source": {
+      "title": "機械学習を利用した日本語小論文採点手法の比較",
+      "venue": "言語処理学会 第28回年次大会 (2022)",
+      "url": "https://www.anlp.jp/proceedings/annual_meeting/2022/pdf_dir/G2-2.pdf",
+      "note": "設問文のみを公開論文から補完。required/recommended_keywords は本変換用に設問文から作成した暫定設定であり、公式の採点基準ではない。"
+    }
+  }
+}
