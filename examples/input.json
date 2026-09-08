@@ -1,0 +1,27 @@
+{
+  "report": {
+    "text": "機械学習ではデータから規則性を学習する。教師あり学習では正解ラベルを利用する。教師あり学習はラベル付きデータを用いて学習する。過学習を防ぐには検証データによる評価が重要である。",
+    "meta": {
+      "student_id": "s001",
+      "submitted_at": "2026-08-07",
+      "attempt": 1
+    }
+  },
+  "assignment": {
+    "prompt": "教師あり学習と過学習について説明しなさい。",
+    "required_keywords": ["教師あり学習", "過学習", "検証データ"],
+    "recommended_keywords": ["正解ラベル", "汎化性能"],
+    "reference_text": "教師あり学習はラベル付きデータから写像を学習する。過学習を避け、未知データへの汎化性能を確保するため検証データを用いる。",
+    "rubric": {
+      "redundancy_weight": 0.30,
+      "consistency_weight": 0.40,
+      "coverage_weight": 0.30,
+      "baseline_sentence_similarity_threshold": 0.55,
+      "baseline_contradiction_similarity_threshold": 0.35,
+      "semantic_redundancy_threshold": 0.88,
+      "contradiction_threshold": 0.65,
+      "keyword_semantic_threshold": 0.72,
+      "semantic_keyword_credit": 0.60
+    }
+  }
+}

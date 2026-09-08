@@ -1,0 +1,51 @@
+case_id	topic	category	pattern	difficulty	red_score	con_score	cov_score	overall	missing_keywords
+synthetic_001	教師あり学習と過学習	exemplary	exemplary_exact	easy	5.0	5.0	5.0	5.0	
+synthetic_002	教師あり学習と過学習	exemplary	exemplary_semantic	medium	5.0	5.0	4.5	4.85	
+synthetic_003	教師あり学習と過学習	redundancy	redundancy_exact	easy	2.5	5.0	5.0	4.25	
+synthetic_004	教師あり学習と過学習	redundancy	redundancy_semantic	hard	3.0	5.0	5.0	4.4	
+synthetic_005	教師あり学習と過学習	contradiction	contradiction_direct	easy	5.0	2.0	5.0	3.8	
+synthetic_006	教師あり学習と過学習	contradiction	contradiction_nonadjacent	hard	5.0	2.5	5.0	4.0	
+synthetic_007	教師あり学習と過学習	coverage	coverage_missing	easy	5.0	5.0	3.0	4.4	検証データ,正則化
+synthetic_008	教師あり学習と過学習	coverage	coverage_semantic	hard	5.0	5.0	4.0	4.7	
+synthetic_009	教師あり学習と過学習	mixed	mixed_errors	hard	3.0	2.5	4.0	3.1	正則化
+synthetic_010	教師あり学習と過学習	boundary	boundary_keyword_incidental	hard	5.0	5.0	4.0	4.7	正則化
+synthetic_011	自然言語処理の文書表現	exemplary	exemplary_exact	easy	5.0	5.0	5.0	5.0	
+synthetic_012	自然言語処理の文書表現	exemplary	exemplary_semantic	medium	5.0	5.0	4.5	4.85	
+synthetic_013	自然言語処理の文書表現	redundancy	redundancy_exact	easy	2.5	5.0	5.0	4.25	
+synthetic_014	自然言語処理の文書表現	redundancy	redundancy_semantic	hard	3.0	5.0	5.0	4.4	
+synthetic_015	自然言語処理の文書表現	contradiction	contradiction_direct	easy	5.0	2.0	5.0	3.8	
+synthetic_016	自然言語処理の文書表現	contradiction	contradiction_nonadjacent	hard	5.0	2.5	5.0	4.0	
+synthetic_017	自然言語処理の文書表現	coverage	coverage_missing	easy	5.0	5.0	3.0	4.4	コサイン類似度,NER
+synthetic_018	自然言語処理の文書表現	coverage	coverage_semantic	hard	5.0	5.0	4.0	4.7	
+synthetic_019	自然言語処理の文書表現	mixed	mixed_errors	hard	3.0	2.5	4.0	3.1	NER
+synthetic_020	自然言語処理の文書表現	boundary	boundary_source_contrast	hard	5.0	5.0	5.0	5.0	
+synthetic_021	分類器の評価指標	exemplary	exemplary_exact	easy	5.0	5.0	5.0	5.0	
+synthetic_022	分類器の評価指標	exemplary	exemplary_semantic	medium	5.0	5.0	4.5	4.85	
+synthetic_023	分類器の評価指標	redundancy	redundancy_exact	easy	2.5	5.0	5.0	4.25	
+synthetic_024	分類器の評価指標	redundancy	redundancy_semantic	hard	3.0	5.0	5.0	4.4	
+synthetic_025	分類器の評価指標	contradiction	contradiction_direct	easy	5.0	2.0	5.0	3.8	
+synthetic_026	分類器の評価指標	contradiction	contradiction_nonadjacent	hard	5.0	2.5	5.0	4.0	
+synthetic_027	分類器の評価指標	coverage	coverage_missing	easy	5.0	5.0	3.0	4.4	混同行列,不均衡データ
+synthetic_028	分類器の評価指標	coverage	coverage_semantic	hard	5.0	5.0	4.0	4.7	
+synthetic_029	分類器の評価指標	mixed	mixed_errors	hard	3.0	2.5	4.0	3.1	不均衡データ
+synthetic_030	分類器の評価指標	boundary	boundary_keyword_incidental	hard	5.0	5.0	4.0	4.7	混同行列
+synthetic_031	関係データベースの正規化	exemplary	exemplary_exact	easy	5.0	5.0	5.0	5.0	
+synthetic_032	関係データベースの正規化	exemplary	exemplary_semantic	medium	5.0	5.0	4.5	4.85	
+synthetic_033	関係データベースの正規化	redundancy	redundancy_exact	easy	2.5	5.0	5.0	4.25	
+synthetic_034	関係データベースの正規化	redundancy	redundancy_semantic	hard	3.0	5.0	5.0	4.4	
+synthetic_035	関係データベースの正規化	contradiction	contradiction_direct	easy	5.0	2.0	5.0	3.8	
+synthetic_036	関係データベースの正規化	contradiction	contradiction_nonadjacent	hard	5.0	2.5	5.0	4.0	
+synthetic_037	関係データベースの正規化	coverage	coverage_missing	easy	5.0	5.0	3.0	4.4	第三正規形,冗長性
+synthetic_038	関係データベースの正規化	coverage	coverage_semantic	hard	5.0	5.0	4.0	4.7	
+synthetic_039	関係データベースの正規化	mixed	mixed_errors	hard	3.0	2.5	4.0	3.1	冗長性
+synthetic_040	関係データベースの正規化	boundary	boundary_source_contrast	hard	5.0	5.0	5.0	5.0	
+synthetic_041	情報検索システム	exemplary	exemplary_exact	easy	5.0	5.0	5.0	5.0	
+synthetic_042	情報検索システム	exemplary	exemplary_semantic	medium	5.0	5.0	4.5	4.85	
+synthetic_043	情報検索システム	redundancy	redundancy_exact	easy	2.5	5.0	5.0	4.25	
+synthetic_044	情報検索システム	redundancy	redundancy_semantic	hard	3.0	5.0	5.0	4.4	
+synthetic_045	情報検索システム	contradiction	contradiction_direct	easy	5.0	2.0	5.0	3.8	
+synthetic_046	情報検索システム	contradiction	contradiction_nonadjacent	hard	5.0	2.5	5.0	4.0	
+synthetic_047	情報検索システム	coverage	coverage_missing	easy	5.0	5.0	3.0	4.4	ランキング,関連度
+synthetic_048	情報検索システム	coverage	coverage_semantic	hard	5.0	5.0	4.0	4.7	
+synthetic_049	情報検索システム	mixed	mixed_errors	hard	3.0	2.5	4.0	3.1	関連度
+synthetic_050	情報検索システム	boundary	boundary_source_contrast	hard	5.0	5.0	5.0	5.0	
