@@ -53,9 +53,6 @@ class ReportEvaluatorApp:
         ttk.Label(shell, text="レポート校正システム", style="Title.TLabel").pack(
             anchor="w"
         )
-        ttk.Label(
-            shell, text="冗長性・論理整合性・要求網羅度を確認し、推敲に役立てます。"
-        ).pack(anchor="w", pady=(5, 12))
         bar = ttk.Frame(shell)
         bar.pack(fill="x", pady=(0, 10))
         ttk.Label(bar, text="評価方式").pack(side="left")
@@ -67,9 +64,10 @@ class ReportEvaluatorApp:
             width=12,
         )
         self.selector.pack(side="left", padx=8)
-        ttk.Label(bar, text="baseline: メモの手法 / improved: 追加モデルが必要").pack(
-            side="left"
-        )
+        ttk.Label(
+            bar,
+            text="baseline: 単純な手法 / improved: baselineの改善手法（追加モデルが必要）",
+        ).pack(side="left")
         self.tabs = ttk.Notebook(shell)
         self.tabs.pack(fill="both", expand=True)
         self.input_tab = ttk.Frame(self.tabs, padding=12)
