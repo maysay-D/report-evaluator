@@ -18,8 +18,13 @@ class Counts:
     tp: int = 0
     fp: int = 0
     fn: int = 0
+    tn: int = 0
 
-    def add(self, pred: set, gold: set) -> None:
+    def add(self, pred: set, gold: set, universe: set | None = None) -> None:
+        if universe is not None:
+            if not (pred | gold) <= universe:
+                raise ValueError("正解または予測に評価対象外の文番号・キーワードがあります")
+            self.tn += len(universe - (pred | gold))
         self.tp += len(pred & gold)
         self.fp += len(pred - gold)
         self.fn += len(gold - pred)
@@ -29,12 +34,15 @@ class Counts:
         recall = self.tp / (self.tp + self.fn) if self.tp + self.fn else 0.0
         f1 = 2 * precision * recall / (precision + recall) if precision + recall else 0.0
         return {
+            "accuracy": round((self.tp + self.tn) / (self.tp + self.tn + self.fp + self.fn), 4)
+            if self.tp + self.tn + self.fp + self.fn else None,
             "precision": round(precision, 4),
             "recall": round(recall, 4),
             "f1": round(f1, 4),
             "tp": self.tp,
             "fp": self.fp,
             "fn": self.fn,
+            "tn": self.tn,
         }
 
 
@@ -93,13 +101,14 @@ def evaluate_system(name: str, records: list[dict]) -> dict:
         pred_con = {h.sentence_index for h in result.highlights if h.type == "contradiction" and h.sentence_index is not None}
         gold_red = set(gold.get("redundancy_sentences", []))
         gold_con = set(gold.get("contradiction_sentences", []))
-        red.add(pred_red, gold_red)
-        con.add(pred_con, gold_con)
+        universe = set(range(len(sentences)))
+        red.add(pred_red, gold_red, universe)
+        con.add(pred_con, gold_con, universe)
 
         required = set(req.assignment.required_keywords)
         pred_kw = {k.keyword for k in result.keywords if k.required and k.matched}
         gold_kw = set(gold.get("matched_required_keywords", [])) & required
-        kw.add(pred_kw, gold_kw)
+        kw.add(pred_kw, gold_kw, required)
 
         for axis, result_score in [
             ("redundancy", result.redundancy_score),

@@ -76,6 +76,8 @@ class BaselineEvaluator:
         if len(sentences) < 2:
             return np.eye(max(1, len(sentences)))
         vec = TfidfVectorizer(analyzer="char", ngram_range=(2, 4), min_df=1)
+        if not any(len(s.strip()) >= 2 for s in sentences):
+            return np.eye(len(sentences))
         x = vec.fit_transform(sentences)
         return cosine_similarity(x)
 
